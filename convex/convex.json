@@ -1,0 +1,7 @@
+{
+  "authInfo": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9",
+  "functions": ["**/*.ts", "**/*.js"],
+  "node": {
+    "type": "16"
+  }
+}
