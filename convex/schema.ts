@@ -24,7 +24,8 @@ export default defineSchema({
     nodes:v.optional(v.any()),
     edges:v.optional(v.any()),
     published: v.boolean(),
-    userId:v.optional(v.id('userTable'))
+    userId:v.optional(v.id('userTable')),
+    agentToolConfig:v.optional(v.any())
   })
     .index("by_name", ["name"])
     .index("by_agentId", ["agentId"]),

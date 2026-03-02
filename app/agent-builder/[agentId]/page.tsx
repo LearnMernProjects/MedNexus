@@ -37,7 +37,7 @@ import { toast } from "sonner";
 import { Button } from '@/components/ui/button';
 import { Save, Square } from 'lucide-react';
 import SettingPanel from "../_components/SettingPanel";
-import { Agent } from "https";
+import { Doc } from "@/convex/_generated/dataModel";
 // Simple node components for missing types
 import { OnSelectionChangeParams } from "@xyflow/react";
 const EndNode = () => (
@@ -75,11 +75,19 @@ function AgentBuilder() {
   const [edges, setEdges] = useState<Edge[]>([]);
   const {agentId} = useParams();
   const convex= useConvex();
-  const [agentDetail, setAgentDetail] = useState<Agent>();
-  const {addedNodes, setAddedNodes, nodeEdges, setNodeEdges, setSelectedNode} = useContext(WorkflowContext);
+  const [agentDetail, setAgentDetail] = useState<Doc<"AgentTable"> | undefined>();
+  const context = useContext(WorkflowContext);
+  const {addedNodes, setAddedNodes, nodeEdges, setNodeEdges, setSelectedNode} = context || {};
   const agentDetails = useQuery(api.agent.GetAgentById, agentId ? { agentId: agentId as string } : "skip");
   const updateAgentDetail = useMutation(api.agent.UpdateAgentDetails);
+useEffect(() => {
+  GetAgentDetails();
+},[]);
+const GetAgentDetails = async () => {
+  const result = await convex.query(api.agent.GetAgentById, { agentId: agentId as string });
 
+setAgentDetail(result);
+}
   // Load agent data from database on initial load
   useEffect(() => {
     if (agentDetails && !isInitialized) {
@@ -144,10 +152,10 @@ function AgentBuilder() {
   );
   const onNodeSelect = useCallback(({ nodes }: OnSelectionChangeParams) => {
     if (nodes.length > 0) {
-      setSelectedNode(nodes[0]);
+      setSelectedNode?.(nodes[0]);
       console.log("Selected node:", nodes[0]);
     } else {
-      setSelectedNode(null);
+      setSelectedNode?.(null);
     }
   }, []);
   useOnSelectionChange({
@@ -185,7 +193,7 @@ function AgentBuilder() {
             </Panel>
 
             <Panel position="top-right">
-              <SettingPanel />
+              <SettingPanel setNodes={setNodes} />
             </Panel>
           </ReactFlow>
         </div>

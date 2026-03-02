@@ -7,7 +7,7 @@ const ApiNode = ({data}:any) => {
       <div className="flex gap-2 items-center">
         <Webhook className="p-2 rounded-lg h-8 w-8" style={{ backgroundColor: data?.bgColor || '#D1F0FF' }} />
         <div className='flex flex-col'>
-          <h2 className="text-sm font-semibold text-black">API</h2>
+          <h2 className="text-sm font-semibold text-black">{data?.label}</h2>
           <p className='text-xs text-gray-700'>API </p>
         </div>
       </div>
