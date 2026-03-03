@@ -1,7 +1,5 @@
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
-import { de } from "date-fns/locale";
-import { query } from "./_generated/server";
 
 export default defineSchema({
   userTable: defineTable({
@@ -17,16 +15,21 @@ export default defineSchema({
     .index("by_email", ["email"])
     .index("by_clerkUserId", ["clerkUserId"]),
 
-  AgentTable:defineTable({
+  AgentTable: defineTable({
     agentId: v.string(),
     name: v.string(),
     config: v.optional(v.any()),
-    nodes:v.optional(v.any()),
-    edges:v.optional(v.any()),
+    nodes: v.optional(v.any()),
+    edges: v.optional(v.any()),
     published: v.boolean(),
-    userId:v.optional(v.id('userTable')),
-    agentToolConfig:v.optional(v.any())
+    userId: v.optional(v.id("userTable")),
+    agentToolConfig: v.optional(v.any()),
   })
     .index("by_name", ["name"])
     .index("by_agentId", ["agentId"]),
+  ConversationTable: defineTable({
+    conversationId: v.string(),
+    agentId: v.id("AgentTable"),
+    userId: v.id("userTable"),
+  }),
 });

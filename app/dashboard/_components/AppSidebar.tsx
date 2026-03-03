@@ -48,26 +48,37 @@ function AppSidebar() {
   const currentUser = useQuery(api.auth.getCurrentUser)
   const credits = currentUser?.token ?? userDetail?.token ?? 0
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar
+      collapsible="icon"
+      style={{
+        ['--sidebar' as any]: '#D1FAE5',
+        ['--sidebar-foreground' as any]: '#000000',
+      }}
+    >
       <SidebarHeader>
         <div className="flex items-center gap-2 px-1">
          
           <Image src="/logo.svg" width={35} height={35} alt="MedNexus Logo" />
-          {open && <h2 className="text-lg font-bold">MedNexus</h2>}
+          {open && <h2 className="text-lg font-semibold text-black">MedNexus</h2>}
         </div>
       </SidebarHeader>
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel className="font-semibold text-black/80">Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuOptions.map((menu) => (
                 <SidebarMenuItem key={menu.title}>
-                  <SidebarMenuButton asChild size={open ? 'lg' : 'default'} isActive={path === menu.url}>
+                  <SidebarMenuButton
+                    asChild
+                    size={open ? 'lg' : 'default'}
+                    isActive={path === menu.url}
+                    className="font-semibold text-black hover:text-black data-[active=true]:text-black"
+                  >
                     <Link href={menu.url}>
                       <menu.icon />
-                      {open && <span>{menu.title}</span>}
+                      {open && <span className="font-semibold text-black">{menu.title}</span>}
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -83,8 +94,8 @@ function AppSidebar() {
           {open && (
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2">
-                <Gem className="w-4 h-4 relative" />
-                <span className="font-bold">Remaining credits: {credits}</span>
+                <Gem className="w-4 h-4 relative text-black" />
+                <span className="font-semibold text-black">Remaining credits: {credits}</span>
               </div>
               <Button className="bg-black text-white">Upgrade to Unlimited</Button>
             </div>

@@ -141,8 +141,6 @@ function ChatUi({
             <div className="break-words whitespace-pre-wrap overflow-hidden text-sm">
               <Markdown remarkPlugins={[remarkGfm]}>{msg.content}</Markdown>
             </div>
-            <h2 className="text-sm whitespace-pre-wrap">{msg.content}</h2>
-            
           </div>
           
         ))}

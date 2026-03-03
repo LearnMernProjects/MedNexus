@@ -15,7 +15,7 @@ export default function HomePage() {
 
   if (!isSignedIn) {
     return (
-      <main className="flex flex-col items-center justify-center min-h-screen gap-4 bg-gradient-to-br from-blue-50 to-indigo-100">
+      <main className="flex flex-col items-center justify-center min-h-screen gap-4 bg-(--background)">
         <h1 className="text-4xl font-bold text-gray-900">Welcome to MedNexus</h1>
         <p className="text-lg text-gray-600">Please sign in to continue</p>
         <div className="flex gap-4">
@@ -31,7 +31,7 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <main className="min-h-screen bg-(--background)">
       <div className="flex items-center justify-between p-6 bg-white shadow-md">
         <h1 className="text-3xl font-bold text-gray-900">Mednexus</h1>
         <UserButton />

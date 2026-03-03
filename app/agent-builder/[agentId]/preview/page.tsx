@@ -20,6 +20,9 @@ import { api } from '@/convex/_generated/api';
 import type { Doc } from '@/convex/_generated/dataModel';
 import { RefreshCcwIcon } from 'lucide-react';
 import ChatUi from './_components/ChatUi';
+import PublishCodeDialog from './_components/PublishCodeDialog';
+import { opendir } from 'fs';
+import { set } from 'zod';
 type AgentDetail = Doc<'AgentTable'> & {
   nodes?: any[];
   edges?: any[];
@@ -54,9 +57,11 @@ const PreviewAgent = () => {
   const params = useParams();
   const agentIdParam = params?.agentId;
   const agentId = Array.isArray(agentIdParam) ? agentIdParam[0] : agentIdParam;
-const [conversationId, setConversationId] = useState<string|null>(null);  const [loading, setLoading] = useState(false);
+const [conversationId, setConversationId] = useState<string|null>(null);
+  const [loading, setLoading] = useState(false);
   const [flowConfig, setFlowConfig] = useState<any>(null);
   const [agentDetail, setAgentDetail] = useState<AgentDetail | null>(null);
+  const [openDialog, setOpenDialog] = useState(false);
 const updateAgentToolConfig = useMutation(api.agent.UpdateAgentToolConfig);
 
   useEffect(() => {
@@ -181,10 +186,14 @@ getConversationId();
       setLoading(false);
     }
   };
+const OnPublish = () =>{
+  setOpenDialog(true);
 
+}
   return (
     <div>
-      {agentDetail && <Header previewHeader={true} agentDetail={agentDetail} />}
+      {agentDetail && <Header previewHeader={true} agentDetail={agentDetail} 
+      onPublish={OnPublish}/>}
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 p-5">
         <div className="lg:col-span-3 border rounded-2xl p-5 min-h-[78vh]">
@@ -233,6 +242,7 @@ getConversationId();
           </div>
         </div>
       </div>
+      <PublishCodeDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
     </div>
   );
 };

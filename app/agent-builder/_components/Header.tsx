@@ -7,8 +7,9 @@ import { X } from 'lucide-react';
 type Props = {
     agentDetail: Agent;
     previewHeader?: boolean;
+    onPublish?: () => void;
 }
-function Header  ({agentDetail, previewHeader=false }:Props) {
+function Header  ({agentDetail, previewHeader=false, onPublish }:Props) {
   return (
     <div className='w-full p-3 items-center justify-between flex'>
             <div className='gap-2 w-full flex items-center '>
@@ -36,7 +37,7 @@ function Header  ({agentDetail, previewHeader=false }:Props) {
                     </Button>
                 </Link>}
 
-                <Button>Publish</Button>
+                                <Button onClick={onPublish} className='bg-black text-white hover:bg-black/90'>Publish</Button>
             </div>
         </div>
   )
