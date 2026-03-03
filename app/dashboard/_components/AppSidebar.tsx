@@ -131,7 +131,7 @@ function AppSidebar() {
               <div className="flex items-center gap-2">
                 <Gem className="w-4 h-4 text-black" />
                 <span className="font-semibold text-black">
-                  Remaining credits: {credits}/2
+                  Remaining credits: {credits}
                   
                 </span>
               </div>
