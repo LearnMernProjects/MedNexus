@@ -62,7 +62,7 @@ const [conversationId, setConversationId] = useState<string|null>(null);
   const [flowConfig, setFlowConfig] = useState<any>(null);
   const [agentDetail, setAgentDetail] = useState<AgentDetail | null>(null);
   const [openDialog, setOpenDialog] = useState(false);
-const updateAgentToolConfig = useMutation(api.agent.UpdateAgentToolConfig);
+const updateAgentToolConfig = useMutation((api as any).agent.UpdateAgentToolConfig);
 
   useEffect(() => {
     if (!agentId) return;
