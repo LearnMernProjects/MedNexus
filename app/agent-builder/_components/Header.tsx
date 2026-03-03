@@ -30,7 +30,7 @@ function Header  ({agentDetail, previewHeader=false }:Props) {
                         Preview
                     </Button>
                 </Link> : <Link href={`/agent-builder/${agentDetail.agentId}`}>
-                    <Button className='bg-black text-sm text-white'>
+                    <Button variant={'outline'} className='bg-black text-sm text-white'>
                         <X className='h-4 w-4 mr-2'/>
                        Close Preview
                     </Button>

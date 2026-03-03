@@ -38,6 +38,8 @@ import { Button } from '@/components/ui/button';
 import { Save, Square } from 'lucide-react';
 import SettingPanel from "../_components/SettingPanel";
 import { Doc } from "@/convex/_generated/dataModel";
+// ...existing code...
+// ...existing code...
 // Simple node components for missing types
 import { OnSelectionChangeParams } from "@xyflow/react";
 const EndNode = () => (

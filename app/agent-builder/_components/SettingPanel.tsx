@@ -19,6 +19,7 @@ const onUpdateNodeData = (formData: any) => {
       ...selectedNode?.data,
       ...formData,
       label: formData?.name ?? selectedNode?.data?.label,
+      settings: formData,
       setting: formData,
     },
     label: formData.name,
@@ -46,7 +47,7 @@ const onUpdateNodeData = (formData: any) => {
 
       {selectedNode?.type === 'EndNode' && <EndSetting selectedFormData={selectedNode?.data?.setting} updateFormData={(value:any)=>onUpdateNodeData(value)} />}
 
-      {selectedNode?.type === 'IfElse' && <IfElseSettings selectedNode={selectedNode} updateFormData={(value:any)=>onUpdateNodeData(value)} />}
+      {(selectedNode?.type === 'ifElseNode' || selectedNode?.type === 'IfElseNode' || selectedNode?.type === 'IfElse') && <IfElseSettings selectedNode={selectedNode} updateFormData={(value:any)=>onUpdateNodeData(value)} />}
         {selectedNode?.type === 'WhileNode' && <WhileSettings selectedNode={selectedNode} updateFormData={(value:any)=>onUpdateNodeData(value)} />}
                   {selectedNode?.type === 'UserApprovalNode' && <UserApproval selectedNode={selectedNode} updateFormData={(value:any)=>onUpdateNodeData(value)} />}
                     {(selectedNode?.type === 'apiNode' || selectedNode?.type === 'ApiNode') && <ApiAgentSettings selectedNode={selectedNode} updateFormData={(value:any)=>onUpdateNodeData(value)} /> }

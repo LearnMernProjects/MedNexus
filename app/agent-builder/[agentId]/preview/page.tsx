@@ -3,66 +3,84 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'next/navigation';
 import axios from 'axios';
-import ReactFlow from 'reactflow';
-import 'reactflow/dist/style.css';
+import { Handle, Position, ReactFlow } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 import { useConvex } from 'convex/react';
-import { RefreshCwIcon } from 'lucide-react';
-
+import { RefreshCwIcon, Square } from 'lucide-react';
+import Header from '../../_components/Header';
+import StartNode from '../../_customNodes/StartNode';
+import AgentNode from '../../_customNodes/AgentNode';
+import IfElseNode from '../../_customNodes/ifElseNode';
+import WhileNode from '../../_customNodes/whileNode';
+import ApiNode from '../../_customNodes/ApiNode';
+import UserApprovalNode from '../../_customNodes/UserApprovalNode';
+import { useMutation } from 'convex/react';
 import { Button } from '@/components/ui/button';
 import { api } from '@/convex/_generated/api';
 import type { Doc } from '@/convex/_generated/dataModel';
-
+import { RefreshCcwIcon } from 'lucide-react';
+import ChatUi from './_components/ChatUi';
 type AgentDetail = Doc<'AgentTable'> & {
   nodes?: any[];
   edges?: any[];
   agentToolConfig?: any;
 };
 
-const FallbackNode = ({ data }: any) => (
-  <div className="px-4 py-2 bg-white border rounded-md text-sm shadow-sm min-w-[120px] text-center">
-    {data?.label || 'Node'}
+const EndNode = () => (
+  <div className='bg-white rounded-2xl p-2 px-3 border-2 border-red-500'>
+    <div className='flex gap-2 items-center'>
+      <Square className='p-2 rounded-lg h-8 w-8 bg-red-100' />
+      <h2 className='text-sm font-medium'>End</h2>
+      <Handle type='target' position={Position.Left} />
+    </div>
   </div>
 );
-type HeaderProps = {
-  previewHeader?: boolean;
-  agentDetail?: any;
+
+const nodeTypes = {
+  StartNode,
+  AgentNode,
+  EndNode,
+  ifElseNode: IfElseNode,
+  IfElseNode,
+  whileNode: WhileNode,
+  WhileNode,
+  apiNode: ApiNode,
+  ApiNode,
+  UserApprovalNode,
 };
+
 const PreviewAgent = () => {
   const convex = useConvex();
   const params = useParams();
   const agentIdParam = params?.agentId;
   const agentId = Array.isArray(agentIdParam) ? agentIdParam[0] : agentIdParam;
-
-  const [loading, setLoading] = useState(false);
+const [conversationId, setConversationId] = useState<string|null>(null);  const [loading, setLoading] = useState(false);
   const [flowConfig, setFlowConfig] = useState<any>(null);
   const [agentDetail, setAgentDetail] = useState<AgentDetail | null>(null);
-
-  const nodeTypes = useMemo(
-    () => ({
-      StartNode: FallbackNode,
-      AgentNode: FallbackNode,
-      IfElseNode: FallbackNode,
-      ApiNode: FallbackNode,
-      EndNode: FallbackNode,
-    }),
-    []
-  );
+const updateAgentToolConfig = useMutation(api.agent.UpdateAgentToolConfig);
 
   useEffect(() => {
     if (!agentId) return;
 
     let cancelled = false;
 
-    const getAgentDetail = async () => {
-      try {
-        const result = await convex.query(api.agent.GetAgentById as any, { agentId } as any);
-        if (!cancelled) setAgentDetail(result as AgentDetail);
-      } catch (error) {
-        console.error('Failed to fetch agent detail:', error);
-      }
-    };
+const GetAgentDetail = async () => {
+  try {
+    const result = await convex.query(api.agent.GetAgentById as any, { agentId } as any);
+    if (!cancelled) setAgentDetail(result as AgentDetail);
+  } catch (error) {
+    console.error('Failed to fetch agent detail:', error);
+  }
+};
 
-    getAgentDetail();
+const getConversationId = async () => {
+  const conversationIdResult = await axios.get('/api/agent-chat');
+  console.log('Conversation ID response:', conversationIdResult.data);
+  setConversationId(conversationIdResult.data.conversationId);
+};
+
+GetAgentDetail();
+getConversationId();
 
     return () => {
       cancelled = true;
@@ -84,6 +102,7 @@ const PreviewAgent = () => {
       let next: any = null;
 
       switch (node.type) {
+        case 'ifElseNode':
         case 'IfElseNode': {
           const ifEdge = connectedEdges.find((e: any) => e.sourceHandle === 'if');
           const elseEdge = connectedEdges.find((e: any) => e.sourceHandle === 'else');
@@ -141,15 +160,23 @@ const PreviewAgent = () => {
   const GenerateAgentConfig = async () => {
     setLoading(true);
     try {
-      console.log('📤 Payload to /api/generate-agent-tool-config:', { jsonConfig: config });
+      console.log('📤 Payload to /api/arcjet/generate-agent-tool-config:', { jsonConfig: config });
 
-      const response = await axios.post('/api/generate-agent-tool-config', {
+      const result = await axios.post('/api/arcjet/generate-agent-tool-config', {
         jsonConfig: config,
       });
 
-      console.log('✅ Agent Config Generation Response:', response.data);
+      console.log('✅ Agent Config Generation Response:', result.data);
+      await updateAgentToolConfig({
+        id: agentDetail?._id as any,
+        agentToolConfig: result.data,
+      });
+      setAgentDetail((prev) => prev ? { ...prev, agentToolConfig: result.data } : prev);
     } catch (error) {
-      console.error('❌ Error generating agent config:', error);
+      const details = axios.isAxiosError(error)
+        ? (error.response?.data?.details ?? error.response?.data?.error ?? error.message)
+        : String(error);
+      console.error('❌ Error generating agent config:', details);
     } finally {
       setLoading(false);
     }
@@ -191,6 +218,19 @@ const PreviewAgent = () => {
           <pre className="text-xs whitespace-pre-wrap overflow-auto max-h-[22vh]">
             {JSON.stringify(flowConfig ?? config, null, 2)}
           </pre>
+          <div className='col-span-1 border rounded-2xl m-5'>
+          {agentDetail?.agentToolConfig && <div className='p-5 flex flex-col gap-5'>
+
+        <Button
+          onClick={GenerateAgentConfig}
+          disabled={loading}
+        >
+          <RefreshCcwIcon className={`${loading && 'animate-spin'}`} />
+        </Button>
+      </div>}
+      {agentDetail && <ChatUi 
+      conversationId={conversationId} agentDetail={agentDetail} GenerateAgentToolConfig={GenerateAgentConfig} loading={loading} />}
+          </div>
         </div>
       </div>
     </div>

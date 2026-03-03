@@ -9,4 +9,5 @@ export type Agent = {
     _creationTime: number;
     nodes?: any;
     edges?: any;
+    agentToolConfig?: any;
 }
