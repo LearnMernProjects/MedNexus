@@ -13973,3 +13973,53 @@ Import traces:
     ./my-app/app/layout.tsx [Server Component]
 
 
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⨯ ReferenceError: useAuth is not defined
+    at AppSidebar (app\dashboard\_components\AppSidebar.tsx:50:17)
+  48 |   const currentUser = useQuery(api.auth.getCurrentUser)
+  49 |   const credits = currentUser?.token ?? userDetail?.token ?? 0
+> 50 |   const {has} = useAuth();
+     |                 ^
+  51 |   const isPaidUser = has({plan:"create_unlimited_agent"});
+  52 |   console.log("isPaidUser", isPaidUser);
+  53 |   return ( {
+  digest: '3623988303'
+}
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⨯ TypeError: has is not a function
+    at AppSidebar (app\dashboard\_components\AppSidebar.tsx:51:22)
+  49 |   const credits = currentUser?.token ?? userDetail?.token ?? 0
+  50 |   const {has} = useAuth();
+> 51 |   const isPaidUser = has({plan:"create_unlimited_agent"});
+     |                      ^
+  52 |   console.log("isPaidUser", isPaidUser);
+  53 |   return (
+  54 |     <Sidebar {
+  digest: '2105235037'
+}
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⨯ ReferenceError: totalRemainingCredits is not defined
+    at AppSidebar (app\dashboard\_components\AppSidebar.tsx:134:39)
+  132 |                 <Gem className="w-4 h-4 text-black" />
+  133 |                 <span className="font-semibold text-black">
+> 134 |                   Remaining credits: {totalRemainingCredits}/2
+      |                                       ^
+  135 |                 </span>
+  136 |               </div>
+  137 |               {open && ( {
+  digest: '1593549733'
+}
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⨯ Error: The default export is not a React Component in "/dashboard/profile/page"
+    at ignore-listed frames
+⨯ Error: The default export is not a React Component in "/dashboard/profile/page"
+    at ignore-listed frames {
+  page: '/dashboard/profile'
+}
+⨯ Error: The default export is not a React Component in "/dashboard/profile/page"
+    at ignore-listed frames
+⨯ Error: The default export is not a React Component in "/dashboard/profile/page"
+    at ignore-listed frames {
+  page: '/dashboard/profile'
+}
