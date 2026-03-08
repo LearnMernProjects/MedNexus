@@ -1,12 +1,18 @@
-"use client";
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
-import { ConvexProvider, ConvexReactClient } from "convex/react";
 import Provider from "./provider";
+import { ConvexClientProvider } from "./ConvexClientProvider";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
-const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
+export const metadata: Metadata = {
+  title: "MedNexus",
+  icons: {
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -14,16 +20,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <ConvexProvider client={convex}>
-        <html lang="en">
-          <body>
-            <Provider>{children}
-              <Toaster/>
+    <html lang="en">
+      <body suppressHydrationWarning>
+        <ClerkProvider>
+          <ConvexClientProvider>
+            <Provider>
+              {children}
+              <Toaster />
             </Provider>
-          </body>
-        </html>
-      </ConvexProvider>
-    </ClerkProvider>
+          </ConvexClientProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }

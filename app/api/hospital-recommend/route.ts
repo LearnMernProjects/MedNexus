@@ -55,6 +55,10 @@ export async function POST(request: Request) {
 export async function GET() {
   return NextResponse.json({
     message: "Use POST /api/hospital-recommend with patient criteria to get ranked hospitals.",
+    csvEndpointForAgentNode: "/api/hospital-recommend/csv",
+    demoApiKey: "demo_borivali_hospital_2026",
+    nodeUrlTemplate:
+      "/api/hospital-recommend/csv?apiKey=demo_borivali_hospital_2026&location={location}&specialist={specialist}&maxPrice={maxPrice}&latitude={latitude}&longitude={longitude}&limit={limit}",
     examplePayload: {
       diseaseType: "cardiology",
       budget: 1200,

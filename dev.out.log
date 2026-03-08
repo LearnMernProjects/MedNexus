@@ -432,3 +432,4 @@ isPaidUser undefined
  GET /dashboard 200 in 1581ms (compile: 403ms, proxy.ts: 967ms, render: 210ms)
 ✓ Compiled in 187ms
  GET /dashboard 200 in 373ms (compile: 19ms, proxy.ts: 259ms, render: 94ms)
+✓ Compiled in 591ms

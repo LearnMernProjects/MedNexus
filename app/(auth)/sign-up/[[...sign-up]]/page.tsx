@@ -1,7 +1,6 @@
 import { SignUp } from "@clerk/nextjs";
 
-const POST_AUTH_REDIRECT_URL =
-  "https://med-nexus-bf8w-git-master-virajs-projects-fdcc8f8a.vercel.app/dashboard";
+const POST_AUTH_REDIRECT_URL = "/dashboard";
 
 export default function SignUpPage() {
   return (

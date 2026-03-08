@@ -4,6 +4,11 @@ import { z } from "zod";
 import OpenAI from "openai";
 import { ConvexHttpClient } from "convex/browser";
 import { api } from "../../../convex/_generated/api";
+import { buildTopicScopedInstructions } from "../../../lib/agent-topic-guardrails";
+import {
+  createToolParameterSchema,
+  executeToolHttpRequest,
+} from "../../../lib/agent-tool-runtime";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -83,6 +88,10 @@ export async function POST(request: Request) {
     apiKey: process.env.OPENAI_API_KEY,
   });
 
+  const host = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
+  const proto = request.headers.get("x-forwarded-proto") ?? "http";
+  const requestOrigin = host ? `${proto}://${host}` : undefined;
+
   try {
     const body = await request.json();
     const {
@@ -102,53 +111,14 @@ export async function POST(request: Request) {
     const generatedTools = (Array.isArray(tools) ? tools : [])
       .filter((t: any) => t?.name && t?.url)
       .map((t: any) => {
-        const paramSchema = z.object(
-          Object.fromEntries(
-            Object.entries(t?.parameters ?? {}).map(([key, type]) => {
-              if (type === "string") return [key, z.string()];
-              if (type === "number") return [key, z.number()];
-              if (type === "boolean") return [key, z.boolean()];
-              return [key, z.any()];
-            })
-          )
-        );
+        const paramSchema = createToolParameterSchema(t);
 
         return tool({
           name: String(t.name),
           description: String(t?.description ?? ""),
           parameters: paramSchema,
           async execute(params: Record<string, any>) {
-            let url = String(t.url);
-
-            for (const key in params) {
-              url = url.replace(`{${key}}`, encodeURIComponent(String(params[key])));
-            }
-
-            if (t?.includeApiKey && t?.apiKey) {
-              url += url.includes("?") ? `&key=${t.apiKey}` : `?key=${t.apiKey}`;
-            }
-
-            const response = await fetch(url);
-            if (!response.ok) {
-              const errBody = await response.text();
-              throw new Error(`API request failed: ${response.status} ${errBody}`);
-            }
-
-            const data = await response.json();
-
-            const temperature =
-              data?.main?.temp ??
-              data?.current?.temp_c ??
-              data?.current?.temperature_2m ??
-              data?.temperature ??
-              null;
-
-            return {
-              city: params?.city ?? params?.q ?? "unknown",
-              temperature,
-              units: "C",
-              raw: data,
-            };
+            return executeToolHttpRequest(t, params, { requestOrigin });
           },
         });
       });
@@ -163,8 +133,12 @@ export async function POST(request: Request) {
 
     const finalAgent = Agent.create({
       name: String(agentName ?? "orchestrator"),
-      instructions:
-        "Always use available tools for weather questions. Return the final numeric weather/temperature answer directly (not 'fetching' or 'querying').",
+      instructions: buildTopicScopedInstructions({
+        agentName,
+        agents,
+        tools,
+      }),
+      tools: generatedTools,
       handoffs: createdAgents,
     });
 

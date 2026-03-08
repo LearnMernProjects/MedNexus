@@ -18,6 +18,76 @@ type Message = {
   content: string;
 };
 
+function inferFieldType(field: string): "string" | "number" | "boolean" {
+  if (/(^is|^has|enabled|active|open)/i.test(field)) return "boolean";
+  if (/(price|amount|count|limit|lat|latitude|lng|longitude|radius|max|min|budget|age|page|size)/i.test(field)) {
+    return "number";
+  }
+  return "string";
+}
+
+function extractUrlParameters(...sources: string[]) {
+  const keys = new Set<string>();
+
+  for (const source of sources) {
+    for (const match of source.matchAll(/\{([a-zA-Z0-9_]+)\}/g)) {
+      if (match[1]) keys.add(match[1]);
+    }
+  }
+
+  return Object.fromEntries([...keys].map((key) => [key, inferFieldType(key)]));
+}
+
+function buildToolsFromNodes(agentDetail: any) {
+  const nodes = Array.isArray(agentDetail?.nodes) ? agentDetail.nodes : [];
+
+  return nodes
+    .filter((node: any) => ["apiNode", "ApiNode"].includes(String(node?.type)))
+    .map((node: any, index: number) => {
+      const settings = node?.data?.settings ?? {};
+      const name = settings?.name || node?.data?.label || `api_tool_${index + 1}`;
+      const url = String(settings?.url ?? "").trim();
+
+      return {
+        name,
+        description: settings?.description || `API tool for ${name}`,
+        method: settings?.method || "GET",
+        url,
+        apiKey: settings?.apiKey || "",
+        includeApiKey: Boolean(settings?.includeApiKey),
+        apiKeyParamName: "apiKey",
+        bodyParams: settings?.bodyParams || "",
+        parameters: extractUrlParameters(
+          url,
+          String(settings?.apiKey ?? ""),
+          String(settings?.bodyParams ?? "")
+        ),
+      };
+    })
+    .filter((item: any) => item.name && item.url);
+}
+
+function resolveRuntimeConfig(agentDetail: any) {
+  const generated = agentDetail?.agentToolConfig?.parsedJson ?? agentDetail?.agentToolConfig ?? {};
+  const fromGeneratedTools = Array.isArray(generated?.tools) ? generated.tools : [];
+  const fromGeneratedAgents = Array.isArray(generated?.agents) ? generated.agents : [];
+
+  const fromConfigTools = Array.isArray(agentDetail?.config?.tools) ? agentDetail.config.tools : [];
+  const fromConfigAgents = Array.isArray(agentDetail?.config?.agents) ? agentDetail.config.agents : [];
+
+  const fallbackTools = buildToolsFromNodes(agentDetail);
+  const tools =
+    fromGeneratedTools.length > 0
+      ? fromGeneratedTools
+      : fromConfigTools.length > 0
+      ? fromConfigTools
+      : fallbackTools;
+
+  const agents = fromGeneratedAgents.length > 0 ? fromGeneratedAgents : fromConfigAgents;
+
+  return { tools, agents };
+}
+
 function ChatUi({
   GenerateAgentToolConfig,
   loading,
@@ -55,13 +125,15 @@ function ChatUi({
           ? conversationId
           : undefined;
 
+      const runtimeConfig = resolveRuntimeConfig(agentDetail);
+
       const res = await fetch("/api/agent-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           agentName: agentDetail?.name,
-          agents: agentDetail?.config?.agents || [],
-          tools: agentDetail?.config?.tools || [],
+          agents: runtimeConfig.agents,
+          tools: runtimeConfig.tools,
           input: currentInput,
           conversationId: safeConversationId,
         }),

@@ -1,0 +1,101 @@
+id,name,area,city,latitude,longitude,specialties,price_min,price_max,opening_time,closing_time,open_24x7,phone
+bh-001,Apex Care Multispeciality Hospital,Borivali West,Mumbai,19.2307,72.8567,cardiology;orthopedics;general medicine,700,1800,00:00,23:59,true,+91-22-40001001
+bh-002,Sanjeevani Heart and Diabetes Clinic,Borivali East,Mumbai,19.2292,72.8659,cardiology;diabetology;general medicine,600,1400,08:00,21:00,false,+91-22-40001002
+bh-003,Shree Child and Women Hospital,Kandivali West,Mumbai,19.2071,72.8425,pediatrics;gynecology;general medicine,500,1300,09:00,20:00,false,+91-22-40001003
+bh-004,Norburn Neuro Care Center,Dahisar East,Mumbai,19.2506,72.8734,neurology;general medicine,900,2200,10:00,20:30,false,+91-22-40001004
+bh-005,Metro Ortho and Trauma Hospital,Borivali East,Mumbai,19.2354,72.8618,orthopedics;emergency;physiotherapy,800,2000,00:00,23:59,true,+91-22-40001005
+bh-006,Budget Plus Community Hospital,Dahisar West,Mumbai,19.2494,72.8444,general medicine;ent;dermatology,400,1000,08:30,19:00,false,+91-22-40001006
+bh-007,WellSpring Cancer and Diagnostics,Malad West,Mumbai,19.1848,72.8347,oncology;radiology;general medicine,1200,3200,09:00,20:00,false,+91-22-40001007
+bh-008,Coastal Kidney and Urology Center,Borivali West,Mumbai,19.2321,72.8508,nephrology;urology;general medicine,1000,2600,09:00,21:00,false,+91-22-40001008
+bh-009,Family First Multicare Hospital,Gorai,Mumbai,19.2472,72.8236,general medicine;pediatrics;cardiology,550,1500,07:30,22:00,false,+91-22-40001009
+bh-010,RapidCare Emergency Hospital,Kandivali East,Mumbai,19.2058,72.8675,emergency;general medicine;orthopedics,700,1700,00:00,23:59,true,+91-22-40001010
+bh-011,Sunrise Family Clinic,Malad East,Mumbai,19.1865,72.8560,general medicine;pediatrics,500,1200,08:00,21:00,false,+91-22-40001011
+bh-012,GreenLeaf Dental and ENT Care,Goregaon West,Mumbai,19.1647,72.8493,dentistry;ent;general medicine,400,1100,09:00,20:00,false,+91-22-40001012
+bh-013,LifeLine Multispeciality Clinic,Kandivali East,Mumbai,19.2095,72.8701,cardiology;general medicine;diabetology,600,1500,08:30,21:30,false,+91-22-40001013
+bh-014,Urban Health Center,Malad West,Mumbai,19.1883,72.8355,general medicine;dermatology;ent,500,1300,09:00,20:00,false,+91-22-40001014
+bh-015,NorthStar Ortho Clinic,Dahisar West,Mumbai,19.2512,72.8457,orthopedics;physiotherapy,700,1700,10:00,21:00,false,+91-22-40001015
+bh-016,Prime Heart Care,Borivali West,Mumbai,19.2315,72.8532,cardiology;general medicine,900,2200,09:00,20:30,false,+91-22-40001016
+bh-017,Lotus Women Care Center,Kandivali West,Mumbai,19.2062,72.8420,gynecology;general medicine,600,1500,09:00,19:30,false,+91-22-40001017
+bh-018,CityKid Pediatrics Clinic,Malad East,Mumbai,19.1874,72.8583,pediatrics;general medicine,500,1200,09:00,20:00,false,+91-22-40001018
+bh-019,Seaside Medical Center,Gorai,Mumbai,19.2461,72.8218,general medicine;ent;dermatology,400,1000,08:30,19:00,false,+91-22-40001019
+bh-020,HealWell Multispeciality Hospital,Goregaon East,Mumbai,19.1678,72.8610,cardiology;orthopedics;general medicine,800,2000,00:00,23:59,true,+91-22-40001020
+bh-021,SilverLine Diagnostics and Clinic,Borivali East,Mumbai,19.2330,72.8662,radiology;general medicine,600,1400,08:00,20:00,false,+91-22-40001021
+bh-022,Shanti ENT and Skin Clinic,Kandivali East,Mumbai,19.2103,72.8719,ent;dermatology,500,1200,09:00,20:00,false,+91-22-40001022
+bh-023,MetroCare Medical Center,Malad West,Mumbai,19.1890,72.8362,general medicine;diabetology,500,1300,08:30,21:00,false,+91-22-40001023
+bh-024,Hope Neuro Clinic,Dahisar East,Mumbai,19.2521,72.8751,neurology;general medicine,1000,2300,10:00,20:30,false,+91-22-40001024
+bh-025,HealthyLife Clinic,Goregaon West,Mumbai,19.1628,72.8465,general medicine;cardiology,600,1500,09:00,20:00,false,+91-22-40001025
+bh-026,WestCare Dental Hospital,Borivali West,Mumbai,19.2299,72.8524,dentistry;general medicine,400,1000,09:00,19:30,false,+91-22-40001026
+bh-027,PrimeCare Family Hospital,Kandivali West,Mumbai,19.2047,72.8414,general medicine;pediatrics;gynecology,600,1500,08:00,22:00,false,+91-22-40001027
+bh-028,SafeHands Trauma Center,Malad East,Mumbai,19.1850,72.8577,orthopedics;emergency,800,2000,00:00,23:59,true,+91-22-40001028
+bh-029,GoodHealth Community Hospital,Dahisar West,Mumbai,19.2498,72.8431,general medicine;ent,400,1000,08:00,19:00,false,+91-22-40001029
+bh-030,Urban Kidney Care,Borivali East,Mumbai,19.2361,72.8642,nephrology;urology,1000,2500,09:00,21:00,false,+91-22-40001030
+bh-031,GoldenCare Hospital,Goregaon East,Mumbai,19.1693,72.8622,cardiology;general medicine,800,2000,09:00,21:00,false,+91-22-40001031
+bh-032,Smile Dental and Skin Clinic,Malad West,Mumbai,19.1877,72.8342,dentistry;dermatology,400,1100,10:00,20:00,false,+91-22-40001032
+bh-033,NorthPoint Medical Center,Dahisar East,Mumbai,19.2533,72.8748,general medicine;cardiology,700,1800,08:30,20:30,false,+91-22-40001033
+bh-034,HealthyKids Clinic,Kandivali East,Mumbai,19.2075,72.8692,pediatrics;general medicine,500,1200,09:00,20:00,false,+91-22-40001034
+bh-035,Elite Women Hospital,Borivali West,Mumbai,19.2310,72.8541,gynecology;general medicine,700,1700,09:00,20:00,false,+91-22-40001035
+bh-036,LifeBridge Medical Center,Gorai,Mumbai,19.2480,72.8240,general medicine;ent;dermatology,500,1200,08:00,20:00,false,+91-22-40001036
+bh-037,Rapid Response Hospital,Kandivali West,Mumbai,19.2051,72.8403,emergency;general medicine,800,1900,00:00,23:59,true,+91-22-40001037
+bh-038,BlueWave Diagnostics,Goregaon West,Mumbai,19.1635,72.8480,radiology;general medicine,600,1400,08:00,20:00,false,+91-22-40001038
+bh-039,WellCare Skin and ENT Clinic,Malad East,Mumbai,19.1869,72.8591,dermatology;ent,500,1200,09:30,20:00,false,+91-22-40001039
+bh-040,HeartBeat Cardiac Clinic,Borivali East,Mumbai,19.2344,72.8655,cardiology;general medicine,900,2100,09:00,21:00,false,+91-22-40001040
+bh-041,GreenCity Health Center,Goregaon East,Mumbai,19.1680,72.8601,general medicine;diabetology,500,1300,08:00,21:00,false,+91-22-40001041
+bh-042,Metro Women Care,Malad West,Mumbai,19.1895,72.8350,gynecology;general medicine,600,1500,09:00,20:00,false,+91-22-40001042
+bh-043,FamilyCare Clinic,Dahisar West,Mumbai,19.2487,72.8426,general medicine;pediatrics,400,1000,08:30,19:30,false,+91-22-40001043
+bh-044,Urban Ortho Care,Borivali West,Mumbai,19.2328,72.8537,orthopedics;physiotherapy,700,1700,09:00,21:00,false,+91-22-40001044
+bh-045,NextGen Neuro Clinic,Kandivali East,Mumbai,19.2109,72.8711,neurology;general medicine,1000,2300,10:00,20:00,false,+91-22-40001045
+bh-046,SmartHealth Diagnostics,Goregaon West,Mumbai,19.1619,72.8472,radiology;general medicine,600,1400,08:00,20:00,false,+91-22-40001046
+bh-047,Silver Oak Medical Center,Malad East,Mumbai,19.1882,72.8570,general medicine;cardiology,700,1800,08:00,21:00,false,+91-22-40001047
+bh-048,SunCare Pediatrics Clinic,Borivali East,Mumbai,19.2350,72.8638,pediatrics;general medicine,500,1200,09:00,20:00,false,+91-22-40001048
+bh-049,Lotus Skin Clinic,Kandivali West,Mumbai,19.2067,72.8430,dermatology;general medicine,500,1200,10:00,20:00,false,+91-22-40001049
+bh-050,City Emergency Hospital,Gorai,Mumbai,19.2475,72.8230,emergency;general medicine,800,1800,00:00,23:59,true,+91-22-40001050
+bh-051,Prime Diagnostics Center,Malad West,Mumbai,19.1889,72.8337,radiology;general medicine,600,1400,08:00,20:00,false,+91-22-40001051
+bh-052,Elite Heart Institute,Borivali West,Mumbai,19.2302,72.8550,cardiology;general medicine,1000,2500,09:00,20:30,false,+91-22-40001052
+bh-053,SafeCare Women Clinic,Kandivali East,Mumbai,19.2086,72.8697,gynecology;general medicine,600,1500,09:00,19:30,false,+91-22-40001053
+bh-054,Healthy Skin Center,Goregaon East,Mumbai,19.1691,72.8630,dermatology;general medicine,500,1200,09:00,20:00,false,+91-22-40001054
+bh-055,Metro Family Clinic,Dahisar East,Mumbai,19.2529,72.8739,general medicine;pediatrics,500,1200,08:00,20:00,false,+91-22-40001055
+bh-056,LifeAid Medical Center,Borivali East,Mumbai,19.2365,72.8647,general medicine;ent,500,1300,08:30,21:00,false,+91-22-40001056
+bh-057,Wellness Kidney Clinic,Malad East,Mumbai,19.1878,72.8588,nephrology;general medicine,900,2300,09:00,21:00,false,+91-22-40001057
+bh-058,SmileBright Dental Hospital,Kandivali West,Mumbai,19.2055,72.8428,dentistry;general medicine,400,1000,09:00,19:00,false,+91-22-40001058
+bh-059,GoodCare Ortho Center,Dahisar West,Mumbai,19.2490,72.8449,orthopedics;physiotherapy,700,1700,09:00,20:30,false,+91-22-40001059
+bh-060,Urban Pediatric Clinic,Goregaon West,Mumbai,19.1621,72.8455,pediatrics;general medicine,500,1200,09:00,20:00,false,+91-22-40001060
+bh-061,QuickAid Emergency Center,Borivali West,Mumbai,19.2317,72.8538,emergency;general medicine,800,1800,00:00,23:59,true,+91-22-40001061
+bh-062,NorthCare Diagnostics,Kandivali East,Mumbai,19.2101,72.8723,radiology;general medicine,600,1400,08:00,20:00,false,+91-22-40001062
+bh-063,Shree Heart Care,Gorai,Mumbai,19.2479,72.8224,cardiology;general medicine,900,2100,09:00,21:00,false,+91-22-40001063
+bh-064,City Women Hospital,Malad West,Mumbai,19.1880,72.8344,gynecology;general medicine,700,1600,09:00,20:00,false,+91-22-40001064
+bh-065,Prime Skin and ENT Clinic,Dahisar East,Mumbai,19.2525,72.8756,dermatology;ent,500,1200,10:00,20:00,false,+91-22-40001065
+bh-066,Metro Multicare Hospital,Borivali East,Mumbai,19.2357,72.8660,general medicine;pediatrics;cardiology,600,1600,08:00,21:00,false,+91-22-40001066
+bh-067,SilverCare Clinic,Goregaon East,Mumbai,19.1671,72.8615,general medicine;diabetology,500,1300,08:00,20:00,false,+91-22-40001067
+bh-068,Lotus Pediatric Care,Kandivali West,Mumbai,19.2069,72.8419,pediatrics;general medicine,500,1200,09:00,20:00,false,+91-22-40001068
+bh-069,WellBridge Neuro Center,Malad East,Mumbai,19.1867,72.8596,neurology;general medicine,1000,2300,10:00,20:30,false,+91-22-40001069
+bh-070,Community Health Hospital,Dahisar West,Mumbai,19.2485,72.8439,general medicine;ent;dermatology,400,1000,08:30,19:30,false,+91-22-40001070
+bh-071,Urban Ortho Trauma Center,Borivali West,Mumbai,19.2324,72.8520,orthopedics;emergency,800,2000,00:00,23:59,true,+91-22-40001071
+bh-072,City Diagnostics Hub,Kandivali East,Mumbai,19.2099,72.8715,radiology;general medicine,600,1400,08:00,20:00,false,+91-22-40001072
+bh-073,NextCare Heart Clinic,Goregaon West,Mumbai,19.1632,72.8470,cardiology;general medicine,900,2200,09:00,20:30,false,+91-22-40001073
+bh-074,Healthy Smile Dental Care,Malad West,Mumbai,19.1893,72.8335,dentistry;general medicine,400,1000,09:00,19:00,false,+91-22-40001074
+bh-075,SafeKid Pediatrics Center,Borivali East,Mumbai,19.2348,72.8651,pediatrics;general medicine,500,1200,09:00,20:00,false,+91-22-40001075
+bh-076,Lotus Women Wellness,Kandivali West,Mumbai,19.2048,72.8422,gynecology;general medicine,600,1500,09:00,19:30,false,+91-22-40001076
+bh-077,NorthStar Diagnostics,Dahisar East,Mumbai,19.2536,72.8742,radiology;general medicine,600,1400,08:00,20:00,false,+91-22-40001077
+bh-078,PrimeCare Medical Center,Gorai,Mumbai,19.2473,72.8239,general medicine;pediatrics,500,1300,08:00,21:00,false,+91-22-40001078
+bh-079,GreenLife Kidney Clinic,Malad East,Mumbai,19.1872,72.8579,nephrology;general medicine,900,2300,09:00,21:00,false,+91-22-40001079
+bh-080,WellAid Emergency Hospital,Borivali West,Mumbai,19.2313,72.8549,emergency;general medicine,800,1800,00:00,23:59,true,+91-22-40001080
+bh-081,City Heart Care,Goregaon East,Mumbai,19.1684,72.8627,cardiology;general medicine,900,2100,09:00,20:30,false,+91-22-40001081
+bh-082,Sunrise Skin Clinic,Kandivali East,Mumbai,19.2081,72.8695,dermatology;general medicine,500,1200,10:00,20:00,false,+91-22-40001082
+bh-083,Metro Family Care,Malad West,Mumbai,19.1887,72.8348,general medicine;pediatrics,500,1300,08:00,21:00,false,+91-22-40001083
+bh-084,NorthPoint Ortho Center,Dahisar West,Mumbai,19.2493,72.8441,orthopedics;physiotherapy,700,1700,09:00,20:30,false,+91-22-40001084
+bh-085,Urban Diagnostics,Borivali East,Mumbai,19.2360,72.8653,radiology;general medicine,600,1400,08:00,20:00,false,+91-22-40001085
+bh-086,PrimeKid Pediatrics Clinic,Kandivali West,Mumbai,19.2057,72.8416,pediatrics;general medicine,500,1200,09:00,20:00,false,+91-22-40001086
+bh-087,HealthyWomen Care,Malad East,Mumbai,19.1864,72.8585,gynecology;general medicine,600,1500,09:00,19:30,false,+91-22-40001087
+bh-088,LifeLine Emergency Center,Goregaon West,Mumbai,19.1626,72.8469,emergency;general medicine,800,1800,00:00,23:59,true,+91-22-40001088
+bh-089,SilverCare Heart Clinic,Borivali West,Mumbai,19.2320,72.8530,cardiology;general medicine,900,2200,09:00,21:00,false,+91-22-40001089
+bh-090,CitySkin Dermatology Center,Kandivali East,Mumbai,19.2105,72.8708,dermatology;general medicine,500,1200,10:00,20:00,false,+91-22-40001090
+bh-091,WellCare Pediatric Hospital,Malad West,Mumbai,19.1891,72.8339,pediatrics;general medicine,500,1200,09:00,20:00,false,+91-22-40001091
+bh-092,NorthCity Diagnostics,Dahisar East,Mumbai,19.2527,72.8745,radiology;general medicine,600,1400,08:00,20:00,false,+91-22-40001092
+bh-093,PrimeCare Ortho Clinic,Borivali East,Mumbai,19.2352,72.8644,orthopedics;physiotherapy,700,1700,09:00,21:00,false,+91-22-40001093
+bh-094,GreenHealth Medical Center,Gorai,Mumbai,19.2469,72.8227,general medicine;ent;dermatology,500,1200,08:30,19:30,false,+91-22-40001094
+bh-095,Metro Neuro Clinic,Kandivali West,Mumbai,19.2064,72.8426,neurology;general medicine,1000,2300,10:00,20:30,false,+91-22-40001095
+bh-096,Urban Women Hospital,Malad East,Mumbai,19.1870,72.8592,gynecology;general medicine,700,1700,09:00,20:00,false,+91-22-40001096
+bh-097,Smart Diagnostics Center,Goregaon East,Mumbai,19.1675,72.8619,radiology;general medicine,600,1400,08:00,20:00,false,+91-22-40001097
+bh-098,LifeBridge Multicare,Borivali West,Mumbai,19.2319,72.8535,general medicine;pediatrics;cardiology,600,1600,08:00,21:00,false,+91-22-40001098
+bh-099,SafeAid Emergency Hospital,Kandivali East,Mumbai,19.2093,72.8720,emergency;general medicine,800,1800,00:00,23:59,true,+91-22-40001099
+bh-100,WellSpring Community Hospital,Dahisar West,Mumbai,19.2489,72.8433,general medicine;ent;dermatology,400,1000,08:00,19:00,false,+91-22-40001100

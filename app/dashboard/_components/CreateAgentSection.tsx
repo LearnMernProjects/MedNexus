@@ -18,6 +18,7 @@ import  {v4 as uuidv4} from 'uuid';
 import { useRouter } from 'next/dist/client/components/navigation'
 import { useContext } from 'react'
 import { UserDetailContext } from '@/app/context/UserDetailContext'
+import { useAuth } from '@clerk/nextjs'
 const CreateAgentSection = () => {
     const [openDialog, setOpenDialog] = useState(false);
     const CreateAgentMutation=useMutation(api.agent.CreateAgent);
@@ -25,7 +26,8 @@ const CreateAgentSection = () => {
       const userDetail = useContext(UserDetailContext);
       const router=useRouter();
       const [loader, setLoader] = useState(false);
-
+const {has}=useAuth();
+const isPaidUser=has?.({plan:'create_unlimited_agent'})
       const createAgent=async()=>{
         if (!userDetail?._id) return;
         setLoader(true);

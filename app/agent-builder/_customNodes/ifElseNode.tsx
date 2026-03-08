@@ -1,14 +1,25 @@
 import React from 'react'
-import { Merge } from 'lucide-react'
+import { Merge, X } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Handle, Position } from '@xyflow/react'
 
-const IfElseNode = ({ data }: any) => {
+const IfElseNode = ({ id, data }: any) => {
   const handleStyle = {
     top: 10
   }
   return (
-    <div className='rounded-2xl bg-white p-3 px-3 border-2 border-yellow-500'>
+    <div className='relative rounded-2xl bg-white p-3 px-3 border-2 border-yellow-500'>
+      <button
+        type='button'
+        className='nodrag nopan absolute -top-2 -right-2 h-5 w-5 rounded-full border bg-white flex items-center justify-center hover:bg-gray-100'
+        onClick={(event) => {
+          event.stopPropagation();
+          data?.onDelete?.(id);
+        }}
+        aria-label='Delete node'
+      >
+        <X className='h-3 w-3' />
+      </button>
       <div className='flex gap-2 items-center'>
         <Merge className='p-2 rounded-lg h-8 w-8' style={{ backgroundColor: data?.bgColor || '#FFF3CD' }} />
         <h2 className='text-sm font-medium'>If/Else</h2>

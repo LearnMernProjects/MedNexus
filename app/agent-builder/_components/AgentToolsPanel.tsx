@@ -1,11 +1,11 @@
 import { id } from 'date-fns/locale';
-import { MousePointer, Square, ArrowRight, Repeat, ThumbsUp, Webhook, Merge } from 'lucide-react';
+import { Bot, Square, ArrowRight, Repeat, ThumbsUp, Webhook, Merge } from 'lucide-react';
 import React from 'react';
 
 const AgentTools = [
   {
     name: 'Agent',
-    icon: MousePointer,
+    icon: Bot,
     bgColor: '#C0F2D7',
     type: 'AgentNode',
   },
